@@ -43,7 +43,7 @@
             <a href="javascript:void(0);" id="scrollTop"><i class="ti-angle-up"></i></a>
         </div>
         <div class="text-center">
-            <p class="content">&copy; 2020 - Design &amp; Develop By <a href="https://themefisher.com/" target="_blank">Themefisher</a></p>
+            <p class="content">&copy; 2020 - Powered By <a href="https://gs-it.co.uk/" target="_blank">GS IT</a></p>
         </div>
     </div>
 </footer>

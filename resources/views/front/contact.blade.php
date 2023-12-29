@@ -26,23 +26,40 @@
                         <p>Rather than just filling out a form, Sleeknote also offers help to the user
                             <br>with links directing them to find additional information or take popular actions.</p>
                         <h4 class="mt-5">Hate Forms? Write Us Email</h4>
-                        <p><i class="ti-email mr-2 text-primary"></i><a href="mailto:georgia.young@example.com">georgia.young@example.com</a>
+                        <p><i class="ti-email mr-2 text-primary"></i><a href="mailto:gurkan.simsek@hotmail.com">gurkan.simsek@hotmail.com</a>
                         </p>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <form method="POST" action="#">
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{session('success')}}
+                        </div>
+                    @endif
+                        @if ($errors->any())
+
+
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger">
+                                    {{$error}}
+                                </div>
+                            @endforeach
+
+
+                        @endif
+                    <form method="POST" action="{{route('front.contactform')}}">
+                        @csrf
                         <div class="form-group">
                             <label for="name">Your Name (Required)</label>
-                            <input type="text" name="name" id="name" class="form-control" required>
+                            <input type="text" name="name" id="name" class="form-control" value="{{old('name')}}" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Your Email Address (Required)</label>
-                            <input type="email" name="email" id="email" class="form-control" required>
+                            <input type="email" name="email" id="email" class="form-control" value="{{old('email')}}" required>
                         </div>
                         <div class="form-group">
                             <label for="message">Your Message Here</label>
-                            <textarea name="message" id="message" class="form-control"></textarea>
+                            <textarea name="message" id="message" class="form-control">{{old('message')}}</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Send Now</button>
                     </form>

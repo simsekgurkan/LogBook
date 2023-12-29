@@ -11,9 +11,9 @@
                 <article class="row mb-5">
                     <div class="col-12">
                         <div class="post-slider">
-                            <img loading="lazy" src="{{$post->image}}" class="img-fluid" alt="post-thumb">
-                            <img loading="lazy" src="{{$post->image}}" class="img-fluid" alt="post-thumb">
-                            <img loading="lazy" src="{{$post->image}}" class="img-fluid" alt="post-thumb">
+                            <img loading="lazy" @if(Request::segment(1))src="../{{$post->image}}  @else src="{{$post->image}}@endif" class="img-fluid" alt="post-thumb">
+                            <img loading="lazy" @if(Request::segment(1))src="../{{$post->image}}  @else src="{{$post->image}}@endif" class="img-fluid" alt="post-thumb">
+                            <img loading="lazy" @if(Request::segment(1))src="../{{$post->image}}  @else src="{{$post->image}}@endif" class="img-fluid" alt="post-thumb">
                         </div>
                     </div>
                     <div class="col-12 mx-auto">
@@ -23,7 +23,7 @@
                                 <a href="{{route('front.author',[$post->getUser->slug])}}">{{$post->getUser->name}}</a>
                             </li>
                             <li class="list-inline-item">Date : {{$post->created_at}}</li>
-                            <li class="list-inline-item">Categories : <a href="#!" class="ml-1">{{$post->getCategory->name}} </a>
+                            <li class="list-inline-item">Categories : <a href="{{route('front.category',$post->getCategory->slug)}}" class="ml-1">{{$post->getCategory->name}} </a>
                             </li>
                             <li class="list-inline-item">Tags : <a href="#!" class="ml-1">Photo </a> ,<a href="#!" class="ml-1">Image </a>
                             </li>
@@ -50,7 +50,7 @@
                     <ul class="list-unstyled widget-list">
                         @foreach($categories as $category)
 
-                            <li><a href="#!" class="d-flex">{{$category->name}}
+                            <li><a href="{{route('front.category',$category->slug)}}" class="d-flex">{{$category->name}}
                                     <small class="ml-auto">({{$category->postCount()}})</small></a>
                             </li>
 
