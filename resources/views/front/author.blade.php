@@ -52,10 +52,10 @@
                             <li class="list-inline-item">Date : {{$post->created_at}}</li>
                             <li class="list-inline-item">Category:	<a href="#!" class="ml-1">{{$post->getCategory->name}} </a>
                             </li>
-                            <li class="list-inline-item">Tags : <a href="#!" class="ml-1">Photo </a> ,<a href="#!" class="ml-1">Image </a>
+                            <li class="list-inline-item">Tags : <a href="{{route('front.post',[$post->slug])}}" class="ml-1">Photo </a> ,<a href="#!" class="ml-1">Image </a>
                             </li>
                         </ul>
-                        <p>{{\Illuminate\Support\Str::limit($post->text,80)}}</p>	<a href="post-elements.html" class="btn btn-outline-primary">Continue Reading</a>
+                        <p>{{\Illuminate\Support\Str::limit($post->text,80)}}</p>	<a href="{{route('front.post',[$post->slug])}}" class="btn btn-outline-primary">Continue Reading</a>
                     </article>
                 </div>
                 @endforeach
