@@ -15,9 +15,11 @@ class frontController extends Controller
     public function __construct(){
         view()->share('categories',Category::inRandomOrder()->Where('status','1')->get());
         view()->share('authors',User::orderBy('name')->Where('status','1')->get());
+
+
     }
     public function index(){
-        $data['posts'] = Post::all();
+        $data['posts'] = Post::orderBy('created_at', 'desc')->get();
         return view('front.index',$data);
     }
 

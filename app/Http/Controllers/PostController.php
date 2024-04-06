@@ -15,12 +15,28 @@ class PostController extends Controller
      */
     public function index()
     {
-       $posts = Post::where('user_id', Auth::user()->id)->get();
+        if (Auth::user()->isAdmin == 1){
+            $posts = Post::all();
+        }
+        else{$posts = Post::where('user_id', Auth::user()->id)->get();}
+
        return view('admin.posts',compact('posts'));
+    }
+    public function dashboard()
+    {
+        return view('admin.dashboard');
     }
 
     public function trashed(){
-        $trashed = Post::onlyTrashed()->get();
+
+        if (Auth::user()->isAdmin == 1){
+            $trashed = Post::onlyTrashed()->get();
+        }
+        else{
+            $trashed = Post::onlyTrashed()->where('user_id', Auth::user()->id)->get();
+            }
+
+
         return view('admin.trashed_posts', compact('trashed'));
     }
 

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->integer('status')->default(1)->comment('0-Passive 1 Active');
+            $table->integer('isAdmin')->default(0)->comment('0-User 1 Admin');
         });
     }
 

@@ -29,7 +29,7 @@ class ContactForm extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('info@gs-it.co.uk', 'Jeffrey Way'),
+            from: new Address('info@gs-it.co.uk', 'LogBook Web Site'),
             subject: 'LogBook Form',
         );
     }

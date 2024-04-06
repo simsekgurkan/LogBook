@@ -28,14 +28,13 @@ Route::post('/contact',[frontController::class, 'contactform'])->name('front.con
 
 //Admin Panel Routes
 
-Route::get('admin/dashboard',function (){
-    return view('admin.dashboard');
-})->middleware('auth')->name('admin.dashboard');
 
 
 Route::middleware('auth')->group(function (){
+    Route::get('/admin/',[PostController::class,'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/dashboard',[PostController::class,'dashboard'])->name('admin.dashboard');
     Route::get('/admin/posts',[PostController::class,'index'])->name('posts.index');
-    Route::get('/admin/trashed-posts',[PostController::class,'trashed'])->name('posts.trashed');
+    Route::get('/admin/posts/trashed-posts',[PostController::class,'trashed'])->name('posts.trashed');
     Route::get('admin/posts/soft-delete/{id}',[PostController::class, 'destroy'])->name('posts.soft-delete');
     Route::get('admin/posts/delete/{id}',[PostController::class, 'forceDelete'])->name('posts.delete');
     Route::get('admin/posts/recover/{id}',[PostController::class, 'recover'])->name('posts.recover');

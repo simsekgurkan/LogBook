@@ -56,7 +56,7 @@
                         </a>
                         <div class="dropdown-menu">
                             @foreach($authors as $author)
-                            <a class="dropdown-item" href="{{route('front.author',[$author->slug])}}">{{$author->name}}</a>
+                            <a class="dropdown-item" href="{{route('front.author',[$author->slug])}}">{{$author->name}} -  {{$author->postCount()}}</a>
                             @endforeach
                         </div>
                     </li>
