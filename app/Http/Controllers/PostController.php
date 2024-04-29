@@ -15,13 +15,19 @@ class PostController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->isAdmin == 1){
-            $posts = Post::all();
-        }
-        else{$posts = Post::where('user_id', Auth::user()->id)->get();}
+
+            $posts = Post::paginate();
 
        return view('admin.posts',compact('posts'));
     }
+
+    public function myposts()
+    {
+      $posts = Post::where('user_id', Auth::user()->id)->paginate();
+
+      return view('admin.posts',compact('posts'));
+    }
+
     public function dashboard()
     {
         return view('admin.dashboard');

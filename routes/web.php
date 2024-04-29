@@ -31,9 +31,11 @@ Route::post('/contact',[frontController::class, 'contactform'])->name('front.con
 
 
 Route::middleware('auth')->group(function (){
-    Route::get('/admin/',[PostController::class,'dashboard'])->name('admin.dashboard');
     Route::get('/admin/dashboard',[PostController::class,'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/',[PostController::class,'dashboard'])->name('admin.dashboard');
+
     Route::get('/admin/posts',[PostController::class,'index'])->name('posts.index');
+    Route::get('/admin/my-posts',[PostController::class,'myposts'])->name('posts.myposts');
     Route::get('/admin/posts/trashed-posts',[PostController::class,'trashed'])->name('posts.trashed');
     Route::get('admin/posts/soft-delete/{id}',[PostController::class, 'destroy'])->name('posts.soft-delete');
     Route::get('admin/posts/delete/{id}',[PostController::class, 'forceDelete'])->name('posts.delete');

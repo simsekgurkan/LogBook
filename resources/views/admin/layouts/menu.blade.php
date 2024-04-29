@@ -4,15 +4,21 @@
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link @if (Request::segment(2)=='dashboard') active @endif" aria-current="page" href="{{route('admin.dashboard')}}">
+                        <a class="nav-link @if (Request::segment(1)=='admin' and Request::segment(2)=='' ) active @endif" aria-current="page" href="{{route('admin.dashboard')}}">
                             <span data-feather="home"></span>
                             Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @if (Request::segment(2)=='posts') active @endif" href="{{route('posts.index')}}">
+                        <a class="nav-link @if (Request::segment(2)=='posts' and Request::segment(3)=='') active @endif" href="{{route('posts.index')}}">
                             <span data-feather="file"></span>
-                            Posts
+                            All Posts
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if (Request::segment(2)=='my-posts') active @endif" href="{{route('posts.myposts')}}">
+                            <span data-feather="file"></span>
+                           My Posts
                         </a>
                     </li>
                     <li class="nav-item">

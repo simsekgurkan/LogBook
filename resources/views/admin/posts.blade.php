@@ -49,7 +49,7 @@
 
 
 
-
+         {{ $posts->links('pagination::bootstrap-5') }}
 
 
 
